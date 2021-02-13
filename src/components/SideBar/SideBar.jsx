@@ -11,12 +11,19 @@ import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
 import { v4 as uuidv4 } from "uuid";
 
+const drawerWidth = 300;
+
 const useStyles = makeStyles({
   list: {
-    width: 250,
+    width: drawerWidth,
   },
   fullList: {
     width: "auto",
+  },
+  drawer: {
+    width: drawerWidth,
+    flexShrink: 0,
+    whiteSpace: "nowrap",
   },
 });
 
@@ -51,7 +58,12 @@ export default function SideBar(props) {
   return (
     <div>
       <React.Fragment key={uuidv4()}>
-        <Drawer anchor="left" open={props.open} onClose={onDrawerCloseHandler}>
+        <Drawer
+          className={classes.drawer}
+          anchor="left"
+          open={props.open}
+          onClose={onDrawerCloseHandler}
+        >
           {list()}
         </Drawer>
       </React.Fragment>
